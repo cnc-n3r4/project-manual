@@ -405,7 +405,7 @@ def main():
     parser.add_argument(
         "--ascii-width",
         type=int,
-        default=192,
+        default=1024,
         help="Width of ASCII art in characters (default: 80)"
     )
     parser.add_argument(
