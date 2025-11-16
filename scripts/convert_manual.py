@@ -666,6 +666,8 @@ def main():
         type=int,
         default=100,
         help="Width of diagrams in characters (default: 100)"
+        default=1024,
+        help="Width of ASCII art in characters (default: 80)"
     )
     parser.add_argument(
         "--no-tables",
