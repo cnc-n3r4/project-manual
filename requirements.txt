@@ -1,0 +1,6 @@
+# PDF Processing
+PyMuPDF>=1.23.0  # fitz - for PDF text and image extraction
+
+# Image Processing
+Pillow>=10.0.0  # Image manipulation
+numpy>=1.24.0  # Required for image operations

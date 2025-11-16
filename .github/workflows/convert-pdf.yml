@@ -1,0 +1,91 @@
+name: Convert PDF to Markdown
+
+on:
+  push:
+    paths:
+      - '**.pdf'
+      - '**.PDF'
+  workflow_dispatch:
+    inputs:
+      pdf_file:
+        description: 'PDF file to convert (leave empty to convert all)'
+        required: false
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Get changed PDF files
+        id: changed-files
+        run: |
+          if [ -n "${{ github.event.inputs.pdf_file }}" ]; then
+            # Manual trigger with specific file
+            echo "pdf_files=${{ github.event.inputs.pdf_file }}" >> $GITHUB_OUTPUT
+          else
+            # Get PDFs from the push
+            CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -i '\.pdf$' || true)
+            if [ -z "$CHANGED_FILES" ]; then
+              # If no changed files in diff, check all PDFs in repo (first run)
+              CHANGED_FILES=$(find . -maxdepth 1 -name "*.pdf" -o -name "*.PDF" | sed 's|^\./||')
+            fi
+            echo "pdf_files<<EOF" >> $GITHUB_OUTPUT
+            echo "$CHANGED_FILES" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Convert PDFs to Markdown
+        run: |
+          PDF_FILES="${{ steps.changed-files.outputs.pdf_files }}"
+
+          if [ -z "$PDF_FILES" ]; then
+            echo "No PDF files to convert"
+            exit 0
+          fi
+
+          echo "Converting PDFs..."
+          echo "$PDF_FILES" | while read -r pdf_file; do
+            if [ -n "$pdf_file" ] && [ -f "$pdf_file" ]; then
+              echo "Converting: $pdf_file"
+              python scripts/convert_manual.py "$pdf_file" \
+                --output-dir output \
+                --ascii-dir ascii \
+                --ascii-width 100
+            fi
+          done
+
+      - name: Commit and push results
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          # Add generated files
+          git add output/ ascii/ 2>/dev/null || true
+
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+
+          # Commit and push
+          git commit -m "Auto-convert PDF to Markdown [skip ci]"
+          git push
