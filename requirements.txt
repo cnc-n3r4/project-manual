@@ -1,6 +1,8 @@
 # PDF Processing
 PyMuPDF>=1.23.0  # fitz - for PDF text and image extraction
+pdfplumber>=0.10.0  # Table extraction
 
 # Image Processing
 Pillow>=10.0.0  # Image manipulation
+opencv-python>=4.8.0  # Edge detection for diagrams
 numpy>=1.24.0  # Required for image operations

@@ -1,0 +1,10 @@
+# Auto-generated files - use ours strategy on conflicts
+output/*.md merge=ours
+ascii/**/*.txt merge=ours
+
+# Ensure consistent line endings
+*.py text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
