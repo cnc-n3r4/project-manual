@@ -1,0 +1,690 @@
+# I SECTION 2. OPERATION TRANSFER CHART [F4] PLC CHECK SCREEN MODE OCR
+
+*Converted from PDF: I-SECTION-2.-OPERATION-TRANSFER-CHART-[F4]-PLC-CHECK-SCREEN-MODE-OCR.PDF*
+
+---
+
+
+
+(4) PLC Check Screen Mode {1/2) - From AUTO/MDI/MANUAL Mode
+
+
+
+A B C
+
+
+
+F2 PLCINFO. Used to display the PLC
+
+
+
+information
+
+
+
+PLC Used to select the PLC
+
+
+
+DATA data mode
+
+
+
+LADDER Used to select the ladder
+
+
+
+MONITOR monitor mode
+
+
+
+DATA TRACE Used to select the data
+
+
+
+trace mode
+
+
+
+PLC CHECK Used to select the PLC
+
+
+
+check mode
+
+
+
+F8 [EXTEND] Extensivefunctions
+
+
+
+SEARCH
+
+
+
+F7 QUIT
+
+
+
+To the initialfunctionkeydis
+
+
+
+play screen of the selected
+
+
+
+operation mode.
+
+
+
+To screen 1 of each opera
+
+
+
+tion mode.
+
+
+
+Used for ID~abel search
+
+
+
+Used to quit the PLC data
+
+
+
+display mode
+
+
+
+Ft MODULE CALL Used to call the module
+
+
+
+F2 PAGE SELECT Used to specify page
+
+
+
+number
+
+
+
+F3 LABEL Used to switch the mode
+
+
+
+between identifier and la
+
+
+
+bel
+
+
+
+F4 SEARCH
+
+
+
+F5 ROLE
+
+
+
+F6 ROLE t
+
+
+
+used 10 select the JD~abel
+
+
+
+search mode
+
+
+
+Used to role up the screen
+
+
+
+Used to role down the
+
+
+
+screen
+
+
+
+F7 QUIT
+
+
+
+F8 [EXTEND]
+
+
+
+Used to quit ladder/SFC
+
+
+
+mode
+
+
+
+Extensive functions
+
+
+
+F1 RESET
+
+
+
+F5 SCREEN
+
+
+
+SWITCH
+
+
+
+F7 QUIT
+
+
+
+F4 SEARCH
+
+
+
+SCREEN
+
+
+
+SWITCH
+
+
+
+F7 QUIT
+
+
+
+F1 SET
+
+
+
+F2 ADD
+
+
+
+F3 CAL
+
+
+
+F5 ITEM
+
+
+
+F6 ITEM~
+
+
+
+Fa QUIT
+
+
+
+F1 CONTACT
+
+
+
+SRCH (R)
+
+
+
+F2 COIL CW)
+
+
+
+SEARCH
+
+
+
+F3 ALL(A)
+
+
+
+MODULE
+
+
+
+F6 START
+
+
+
+F7 CANCEL
+
+
+
+4203-E P-19
+
+
+
+SECTION 1 FOREWORD
+
+
+
+Used to reset the display
+
+
+
+Used to select display
+
+
+
+type
+
+
+
+Used to quit the PLC infor
+
+
+
+mation display mode
+
+
+
+Used to execute data
+
+
+
+search
+
+
+
+Used to select display
+
+
+
+page
+
+
+
+Used to qutt the tool dis
+
+
+
+play mode
+
+
+
+Used to set new data
+
+
+
+Used to add the input data
+
+
+
+to the currently stored
+
+
+
+data
+
+
+
+Used to start math opera
+
+
+
+tion for the inpu1 data
+
+
+
+Used to update the PLC
+
+
+
+data classification screen
+
+
+
+(return)
+
+
+
+Used to update the PLC
+
+
+
+data classification screen
+
+
+
+(advance)
+
+
+
+Used to quit the PLC
+
+
+
+check mode
+
+
+
+Used to search for con•
+
+
+
+tacts
+
+
+
+Used to search for coils
+
+
+
+Used to search al I pro
+
+
+
+grams
+
+
+
+Used to execu1e search
+
+
+
+Used to quit the search
+
+
+
+mode
+
+
+```text
+
+
+                                                                                                 ──
+                                                                                    ┌────────┐─ │░░░────────
+                                                                                    │░░░░░░░░│  └───░░░░░░▒░
+           ┌──────   •    •                  ──   •   ──┐─                  •  ─────┘────────┘        ── • •
+           │      ──┐  ─── ──────────────────  ──┐  ──  │ ──────┐─┐────────┐ ┌─                             │
+           └────── ░└──                  ░       │ │░   │       │░│ ░      │ │    ──────────────────────────┘
+                  ──   ──────────────────────────┘ └────┘───────┘─┘────────┘─┘────
+                      •
+                     • ───┐                                           ┌────────┐        ┌─┐──┐─┐───┐───┐
+                    │░   ░└─────┐      ┌─────────────┐  ─────────────┐┘   ░    │        │░│  │ │   │░ ░│
+                    │     │     │     ┌┘░░░ ░░ ░ ░   │               │ ─┐─ ┌───         └─┘──┘─┘───┘───┘
+             ───────┘        ┌──┘     │      │      ─┘         ┌─────┘  │  │
+            │       │  ░ │░──┘        │░─┐ │░│  ░    │         │     │░ ░  │
+            └───────┘    │   └─┐      │  │ │ │    ───┘         │     │░    │
+                    │    │ ░░░░└┐     │ ░└┐┘░└┐ ░  ░░│         │     │     │
+                    │░   │      └─┐   │░  │ • │     ┌┘         └─    │    ░└────          ───┐───────┐ ┌───
+           • ──     │░   └────┐─┘░│   │ ░   ░┌┘ ░  ░│         ░│ ┌┐  │     ░ ░░ │       │    │░░ ░░░░│ │   │
+          │ │  ┌─┐─ │░   │    │   │   │     ░│     ─┘       ──┐  └┘  │    •░────┘       └────┘───────┘ └─┐ │
+          │ └──┘ │  │  ░ │    │░ ░│   │ ░   ░░       │        │░ ░│  │  ░  │                             │ │
+          │ │  │ └─ │     ┌───┘───┘   └─░────────────┘        │   │  │     │                    •   ───┐─┘ │
+          │ │  │ │  │     │             •                     │   │  │    •░  │         │░ ─────░ ─┐  ░│ │ │
+          │ │  │ │  │    ░└─────┐     │   •   ───     ────── •    │  │░─┐─░┌──┘         └──   ░ ── │ ──┘─┘ │
+          │ │  │ │   │ ░  ░░ ░░░│     │ ░    ░ ░░─┐───      │  •  │  │  │ ░│   ───────                   │ │
+          │ │  │ │   └──────────┘     └────       │    ░ ░ ░│ │   │   │ │  │                         ──
+          │ │  │ │                         ┌────░░│ ░░░ •░•░│ │   │   │ └─ └─────────────────────────     │ │
+          │ │  │ │                         │░░░░░ ░ ░─── • ─┘ │   │   │ │  │                              │ │
+          │ │  │ │                         └─────────         │   │   └─┘  │                              │ │
+          │ │  │ │                                            │   │   │░│ ─┼────                          │ │
+          │ │  │ │                                            │   │   └─┘  │    │      ┌───┐────────┐     │ │
+          │ │  │ │                                             │  │   │  •░│    │      │░░░│        │     │ │
+          │ │  │ │                                           │ │  │  ┌┘░  ░└────┘      │   │        │     │ │
+          │ │  │ │                                           │    │ ─┘    ░░░░░░│      │░░┌┘        └─    │ │
+          │ │  │ │                                           │   │   │  │  ─────┘      └──┘               │ │
+          │ │  │ │                                           │   │ │ │  │                  • ─────────┐   │ │
+          │ │  │ └───────────────────────────────────────── ─┘   │ │ │  │  │  │         ░░  •░░      ░│   │ │
+          │ │  │ │                                         •     │ │ │░ │  └──┘        ───── ─────────┘   │ │
+          │ │  │ │ •      ─────────────────────────────────  ─┐  │ │  │░░• │                              │ │
+          │ │   │ │     •                                     │   •   │    │                  ───────     │ │
+          │ │   │ │  ─── •                                    │    │  └───┐░─┐                            │ │
+          │ │   │ │ │░    │                                   │    │  │   │  │          ┌─  ─┐────┐─┐──┐  │ │
+          │ │    │  │ │   │                                   │    │ •  ┌─┘──┘         ┌┘░░░░│░░░░│░│ ░│  │ │
+          │ │  │ │  │ │   │                                   │    │    │    │         └┘░•  └─    ─┘  │  │ │
+          │ │  │ │  │ ░░  │                                   │  │ │ │ ░│   ░│         │   ──  ────       │ │
+          │ │  │   ─┘  │ ─┘────┐      ┌─────┐──┐─────┐        │  │ └─┘  │  ┌─┘         │░ ░ ░░ ░░░░░░──   │ │
+          │ │  │ │  │ ─┘─ ░░░░ │      │ ░   │░ │     │        │  └┐  │░ └─ │           │          •       │ │
+          │ │  │ └──┼─    ┌────┘      └─────┘──┘─────┘        │  └┘  └┐    └──┐            ─────── ───┐   │ │
+          │ │  │ │  │  ── │                                   │  │   └┘ ─┐─┘  │        ┌───░░░░░░░░░░░│   │ │
+          │ │  │ │  │ •   │                                   │ │    │   │ │  │        │░░░░•         │   │ │
+          │ │  │ │  │░░░  │                                   │ │    │       ░         │     ─────────┘   │ │
+          │ │  │ │  │ │   │                                   │ │    │    ─┐───        │░░ ░░░░░░░░░░░│   │ │
+          │ │  │ │  │ └─ ─┘─┐                 ────┐──┐────────┘ └─┐   ──┐  │           └──────────────┘   │ │
+          │ │  │ │  │       │         ┌── ───  ░ ░│ ░│        │░  └┐ │ ░│  │                              │ │
+          │ │ │ │   │  ── ──┘         │ ░•   ─────┘──┘────────┘┐─  │ │  └──┼──┐                ─────┐    ─┘ │
+          │ │ │ │   │    │              •                      │   │ │ ░░  │ ░│        ┌───────     │     │ │
+          │ │ │  ───┘    └─ ──────────        ─────────────────┘───┘ │    ─┘──         │ ░   ░  ──── ──── └─┘
+          │ │  •     ░░░   •                                      ░│ │░•                    ───
+          │ │   │ │ ┌────         ─┐──┐             ┌──────────┐───┘ └─ •  ──┐─── ──── ┌─┐     •      ─────
+          │ │   │░│ │              │  │            ┌┘          │   │ │    •░░│░░░•     │░│           │
+          │ │   │░│ │ ░            │  └───┐───     │           │   │ │     • │  │      └─┘           │
+          │ │   │ │ │ ─┐ ┌─┐  ┌────   │░░░│        │           │   │ │ ─┐ │░░░░░│      │             │
+          │ │   │ │    │░│ │ ┌┘       │   └─┐─────┐┘─┐         │    │   │ │ ────┘      └───          │
+          │ │   │ │    └─┘ └─┘        │░░░░ │░░░░ │░░│         │    │ ┌─┘ │░░░░ │      │░░░          │
+          │ │   │ │ ───┘ └─  └─┐      └─┐ •    ───┘──  ────────┼────┼─┘ │ └─────┘      └─────────────┘
+          │ │   │  │  ░│░│     │      │ └┐ ────      •         │    │░│░ ░│
+          │ │   │  │░•   │   ──┘      │░░│ ░░░        │ ───────┼────┼─    │
+          │ │   │  │░ ░░│  ─┐  │      │    ───        │        │    │  ┌─░│
+          │ │   │ ─┼──┐─┘   │  │      └───           ─┘        │    │  │  └───┐        ┌──────────────┐  •
+          │ │   │  │  │    • ┌┐       │░░░•         │          │    │  │  │   │        │   ░    ░ ░   │   │
+          │ │   │  │    ░│  ┌┘┘      │   │          └┐ ────────┼──  │ │ │░│   └─┐      │          │  │   ─┘
+          │ │   │  │  ┌┐░│  │        │░░░│    ░░     │         │░░  │ │ │ │ ░░░░│      │ ░      ░ │░ │    │
+          │ │   │  │ ─┘┘░│  └──┐      ───┘        ──           └──  │  • ░└─────┘      └──────────┘──┘    │
+          │ │   └─┐┘  ░░░      └┐    • ░  ───────    ───      ─┘   │   ░ │       ──────               ────┘
+          │ │ ──┘░│           • └────             ───   ─────┐  ░  │ ────┘
+          │   ░ └─┘                                          │░┌───┘─
+          │░ │░┌┘ └──────────────────────────────────────────┘░│
+          │░─┘ │  │                                          │ │
+           •    ──┘
+
+
+
+
+
+```
+
+*Figure from page 1 (2346x3317 px)*
+
+
+---
+
+
+#### A B C
+
+
+## 4203-E P-20
+
+
+## SECTION 1 FOREWORD
+
+
+## PLC Check Screen Mode (2/2) - From AUTO/MDI/MANUAL Mode
+
+Fl SETCOND Used to set new data
+
+
+
+F3 LABEL Used to switch the mode F3 COMMENT ON/ Used to select whether or
+
+
+
+between identifier and la- OFF not a comment is
+
+
+
+bel displayed
+
+
+
+F4 F4 DATA Used to select the display
+
+
+
+ON/OFF objective -data or label
+
+
+
+F5 TRACE Used to change the F5
+
+
+
+SCREEN screen to the trace screen
+
+
+
+F6 F6
+
+
+
+F7 QUIT Used to quit the data trace F7 QUIT Used to quit ladder/SFC
+
+
+
+mode mode
+
+
+
+F8 F8 [EXTEND] Extensive functions
+
+
+
+F1 TRACE START Used to execute trace F1 TRACE START Used to execute trace
+
+
+
+F2 TRACE QUIT Used to end trace F2 TRACE QUIT Used to end trace
+
+
+
+F3 F3 DATA SWITCH Used to change the trace
+
+
+
+address data
+
+
+
+F4 DISPLAY POINT Used to change the dis- DISPLAY POINT Used to change the dis-
+
+
+
+play position play pos~ion
+
+
+
+F5 DISPLAY 1 DATA Used to select type 1 data F5 DISPLAY 8 DATA Used to select type 8 data
+
+
+
+F6 CHANGECOND Used to select the trace F6 CHANGECOND Used to select the trace
+
+
+
+condition change mode condition change mode
+
+
+
+F7 QUIT Used to quit the data trace F7 QUIT Used to quit the data trace
+
+
+
+mode mode
+
+
+
+F8 F8
+
+
+```text
+
+
+                                                                                                ┌─
+                                                                                    ┌─────┐─┐── │░░───────░│
+                                                                                    │░░░░ │░│   └──░░░░░░░─┘
+                         •                       ───    │                   •    ┌──┘─────┘─┘──       ──
+                       ── ───────────────────────   ────┘──────────────────┐ ┌───┘                         │
+                ──────┐░    ░  ░ ░  ░   ░░        ──░       ░              │ │    ─────────────────────────┘
+             ──┐      └───────────────────────────  ──── ────┐─ ┌──────────┘─┘── •
+          ┌─┐ ░└──┐                                          │ ┌┘               •
+          │░│ ─┘ ░│  ┌─┐──      │              ─────         │ │      ┌─┐──┐
+          └─┘   ┌─┘  │ │  ┌─ ───┘                            │ └─────┐┘ │  │
+          │ │   │ │ •░░│ ░│ •                                │ │     │░░│ ░└─────┐──┐    ──      ───┐──┐
+          │ │   │ │  ─┐┘┐░ ░░│        ┌──────░──   •░           ─────┼──┘─░  ░░░░│ ░│  ┌─  ──────░ ░│  │
+          │ │   │ │ │ │ │ ┌──┘        │ ░░░ ░•░░───░──               │    ░░─────┘──┘  │      ░  ──    │
+          │ │  •  │ │ └┐┘ │           └─── •  ──   •                 │░─┐              │░░░ ░        ──
+          │ │   │ │ │  │  │                                          │  │ │░░░──       │ ░   ░░•   ░•░░
+          │ │   └─┘ │░ │  └───            ──────           ───────   │░ │ │ ──         └─░░ ───░────░──
+          │ │   │░  │  │  ░░░░        ┌── ░  ░ ░──────┐ ┌─┐       │  │  │  │             ───   •
+          │ │  ─┼─┐ │░   ░┌────       │  ─── ───    ░ │ │ │  ───┐ │  │░ │  │
+          │ │   │ │ │░░░  │           │           •   │ │ │     │ │  │  │  └──┐             ─┐────────
+          │ │  │  │  ──┐ ░│  │        └┐─ ░    ░ │░ ░ │ │░ ─┐   │ │   ──┼─ │  │        ┌──┐─ │              │
+          │  │ │  │ │  │  └──┘        └┘ ────────┘────┘─┼─  │   │ │  │  │ │   └──┐     │░░│            •    │
+          │  │░│  │ │░░░  │                             │   │   │ │  │ ░│ │      │     └──┘             │   │
+          │  │ │  │  ┌──  └─────                      ──┼── │ • │ │   ──  └─────  ─────    ────         │   │
+          │  │ │  └──┘                             ───  │░ ░│  ─┼─┼──                                ───┘   │
+          │  │ │              ────               ──   ──┘─┐ │ • │ │  ─┐─┐─ ───┐─────    ─────┐──────┐      ─┘
+          │  │  ┌───┐  │  ░ ░░ ░░░░───  ░      ░   ───    │ │   └─┼── │░│ │  ░│ ░ ░ ┌──┐ ░ ░ │  ░   └─   ──
+          │   • │   │░░│ • • ──────   ───────── ┌──       │ │   │ │   │ │ └───┘────┐┘  │           ─┘
+          │  │  │    ──┼─ • •                  ─┘         │ │   │ │    ─┘          └┘  └─────┐──  •  ─┐
+          │  │░│    │  │                                  │ │   │ │  │  │           │  │░░ ░ │░ ░     │
+          │  │░│    │  │  ──────┐──── ┌─────────────┐     │ │   │ └─┐┘░            ─┘  │     │ │     ┌┘
+          │  │ │ ── │  │        │     │░░░░░░░░     │     │ │   │ │ │░                 │░░ ░ ░─┘░ ░  │
+          │  │ │   ┌┘ ─┼─       │   • │   ──         │ ───┼─┼───┘   │                  │ ┌───         •
+          │  │ │  ─┘░  │    ────┘──┐  │ ──  ┌───────░│    │░│       │░ ░░    ───── ─┐  │ │ ░ │░──────░░ ┌─┐
+          │  │ │   └┐ ─┘  ┌─░ ░   ░│  │ ░   │ ░      │  • │ └───────┘┐───────░ ░    └─ │ ░ ░ │░  ░    ┌─┘░│
+          │  │ │    │     │  ──────   │ ░      │     └── ─┘ │        │        ──────   │  ░• │░ ░   ░ │ │  │
+          │  │ │    │ •   ░ │         │░░   ───┘ ░░  ░    │ │        │     ░ │         │ ░ ░─┘───────    │░│
+          │  │░│    │  • ┌──┘         └─────    ──────────┘ │        │  ─┐┐──┘         └────         ───┐┘ │
+          │  │ │    └┐  ┌┘                                │ │        │   └┘                             │  │
+          │  │ │ ──  └──┘                       ──────────┘ └────── • ───┘                 ───      ────┘   │
+          │ │      ──    ───────────────────────          └─┘      •                          ──────     •  │
+          │ │                                             │░│                                             ─┐┘
+          │   ────    ────────────    ────────────        └─┘                    ────────────────────      │
+             •    ────            ────            ────────   ────────────────────                    ─────
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+*Figure from page 2 (2346x3317 px)*
