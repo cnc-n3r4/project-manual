@@ -68,7 +68,7 @@ jobs:
               python scripts/convert_manual.py "$pdf_file" \
                 --output-dir output \
                 --ascii-dir ascii \
-                --ascii-width 100
+                --diagram-width 120
             fi
           done
 
@@ -86,6 +86,36 @@ jobs:
             exit 0
           fi
 
-          # Commit and push
+          # Commit and push with conflict resolution
           git commit -m "Auto-convert PDF to Markdown [skip ci]"
-          git push
+
+          # Try to push, handle conflicts
+          MAX_RETRIES=3
+          RETRY=0
+
+          while [ $RETRY -lt $MAX_RETRIES ]; do
+            if git push; then
+              echo "Successfully pushed changes"
+              exit 0
+            fi
+
+            echo "Push failed, attempting to pull and rebase..."
+            RETRY=$((RETRY + 1))
+
+            # Pull with rebase
+            git pull --rebase origin ${{ github.ref_name }} || {
+              echo "Rebase failed, aborting and trying again"
+              git rebase --abort
+              git reset --soft HEAD~1
+              git stash
+              git pull origin ${{ github.ref_name }}
+              git stash pop || true
+              git add output/ ascii/
+              git commit -m "Auto-convert PDF to Markdown [skip ci]" || true
+            }
+
+            sleep 2
+          done
+
+          echo "Failed to push after $MAX_RETRIES attempts"
+          exit 1
