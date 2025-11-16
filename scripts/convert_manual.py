@@ -88,88 +88,44 @@ class AdvancedPDFConverter:
 
     def image_to_box_drawing(self, image: Image.Image, width: int = 100) -> str:
         """
-        Convert image to box-drawing character art using edge detection
+        Convert image to high-quality ASCII art with detailed character set
 
         Args:
             image: PIL Image object
             width: Width in characters
 
         Returns:
-            Box-drawing character art as string
+            ASCII art as string
         """
-        # Convert to numpy array
-        img_array = np.array(image)
-
-        # Convert to grayscale based on number of channels
-        if len(img_array.shape) == 2:
-            # Already grayscale
-            gray = img_array
-        elif img_array.shape[2] == 4:
-            # RGBA
-            gray = cv2.cvtColor(img_array, cv2.COLOR_RGBA2GRAY)
-        elif img_array.shape[2] == 3:
-            # RGB
-            gray = cv2.cvtColor(img_array, cv2.COLOR_RGB2GRAY)
-        else:
-            # Unknown format, convert via PIL
-            gray = np.array(image.convert('L'))
+        # Convert to grayscale
+        img = image.convert('L')
 
         # Calculate height maintaining aspect ratio
-        aspect_ratio = gray.shape[0] / gray.shape[1]
-        height = int(width * aspect_ratio * 0.5)  # 0.5 for character aspect
+        aspect_ratio = img.height / img.width
+        height = int(width * aspect_ratio * 0.5)  # 0.5 for character aspect ratio
 
         # Resize
-        resized = cv2.resize(gray, (width, height), interpolation=cv2.INTER_AREA)
+        img = img.resize((width, height), Image.Resampling.LANCZOS)
 
-        # Edge detection
-        edges = cv2.Canny(resized, 50, 150)
+        # Detailed ASCII character set from light to dark
+        # More characters = better detail for small diagrams
+        chars = " .'`^\",:;Il!i><~+_-?][}{1)(|\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$"
 
-        # Convert to box-drawing characters
+        # Convert to pixels
+        pixels = np.array(img)
+
+        # Convert to ASCII
         result = []
-        for y in range(height):
-            row = []
-            for x in range(width):
-                if edges[y, x] > 128:
-                    # Check neighbors to determine box character
-                    has_top = y > 0 and edges[y-1, x] > 128
-                    has_bottom = y < height-1 and edges[y+1, x] > 128
-                    has_left = x > 0 and edges[y, x-1] > 128
-                    has_right = x < width-1 and edges[y, x+1] > 128
-
-                    # Vertical or horizontal line
-                    if (has_top or has_bottom) and not (has_left or has_right):
-                        row.append(self.BOX_CHARS['vertical'])
-                    elif (has_left or has_right) and not (has_top or has_bottom):
-                        row.append(self.BOX_CHARS['horizontal'])
-                    elif has_top and has_bottom and has_left and has_right:
-                        row.append(self.BOX_CHARS['cross'])
-                    elif has_top and has_left:
-                        row.append(self.BOX_CHARS['bottom_right'])
-                    elif has_top and has_right:
-                        row.append(self.BOX_CHARS['bottom_left'])
-                    elif has_bottom and has_left:
-                        row.append(self.BOX_CHARS['top_right'])
-                    elif has_bottom and has_right:
-                        row.append(self.BOX_CHARS['top_left'])
-                    elif has_top or has_bottom:
-                        row.append(self.BOX_CHARS['vertical'])
-                    elif has_left or has_right:
-                        row.append(self.BOX_CHARS['horizontal'])
-                    else:
-                        row.append('•')
-                else:
-                    # Use density for non-edge pixels
-                    if resized[y, x] < 50:
-                        row.append('█')
-                    elif resized[y, x] < 100:
-                        row.append('▓')
-                    elif resized[y, x] < 150:
-                        row.append('▒')
-                    elif resized[y, x] < 200:
-                        row.append('░')
-                    else:
-                        row.append(' ')
-            result.append(''.join(row).rstrip())
+        for row in pixels:
+            ascii_row = ''
+            for pixel in row:
+                # Map 0-255 to character index (inverted - 255=white=space, 0=black=@)
+                # Cast to int to avoid overflow
+                pixel_val = int(pixel)
+                char_idx = (255 - pixel_val) * (len(chars) - 1) // 255
+                char_idx = min(char_idx, len(chars) - 1)
+                ascii_row += chars[char_idx]
+            result.append(ascii_row.rstrip())
 
         return '\n'.join(result)
 
